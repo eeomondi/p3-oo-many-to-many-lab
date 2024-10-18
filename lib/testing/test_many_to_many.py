@@ -72,7 +72,7 @@ def test_author_has_books():
     """Test Author class has method books() that returns a list of its books"""
     author = Author("Name")
     book = Book("Title")
-    Contract(author, book, '01/01/2001', 50000)
+    Contract(author, book, '01/01/2001', 50)
 
     assert book in author.books()
 
@@ -80,7 +80,7 @@ def test_book_has_contracts():
     """Test Book class has method contracts() that returns a list of its contracts"""
     author = Author("Name")
     book = Book("Title")
-    contract = Contract(author, book, '01/01/2001', 50000)
+    contract = Contract(author, book, '01/01/2001', 50)
 
     assert book.contracts() == [contract]
 
@@ -88,7 +88,7 @@ def test_book_has_authors():
     """Test Book class has method authors() that returns a list of its authors"""
     author = Author("Name")
     book = Book("Title")
-    Contract(author, book, '01/01/2001', 50000)
+    Contract(author, book, '01/01/2001', 50)
 
     assert author in book.authors()
 
@@ -97,7 +97,7 @@ def test_author_can_sign_contract():
     author = Author("Name")
     book = Book("Title")
 
-    contract = author.sign_contract(book, "01/01/2001", 60000)
+    contract = author.sign_contract(book, "01/01/2001", 60)
 
     assert isinstance(contract, Contract)
     assert contract.author == author

@@ -40,6 +40,15 @@ class Contract:
     all_contracts = []
 
     def __init__(self, author: Author, book: Book, date: str, royalties: int):
+        if not isinstance(author, Author):
+            raise Exception("Author must be an instance of Author.")
+        if not isinstance(book, Book):
+            raise Exception("Book must be an instance of Book.")
+        if not isinstance(date, str):
+            raise Exception("Date must be a string.")
+        if not isinstance(royalties, int) or royalties < 0 or royalties > 100:
+            raise Exception("Royalties must be an integer between 0 and 100.")
+
         self.author = author
         self.book = book
         self.date = date
@@ -49,15 +58,3 @@ class Contract:
     @classmethod
     def contracts_by_date(cls, date: str):
         return [contract for contract in cls.all_contracts if contract.date == date]
-
-
-#use 
-if __name__ == "__main__":
-    author1 = Author("John Doe")
-    book1 = Book("Great Novel")
-    
-    contract1 = author1.sign_contract(book1, "2023-01-01", 10)
-    
-    print(author1.total_royalties())  # Output: 10
-    print(author1.books())             # Output: [<__main__.Book object at ...>]
-    print(Contract.contracts_by_date("2023-01-01"))  # Output: [<__main__.Contract object at ...>]

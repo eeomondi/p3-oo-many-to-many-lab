@@ -16,7 +16,7 @@ def test_contract_init():
     book = Book("Title")
     author = Author("Name")
     date = '01/01/2001'
-    royalties = 40000
+    royalties = 50
     contract = Contract(author, book, date, royalties)
 
     assert contract.author == author

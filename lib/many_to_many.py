@@ -3,7 +3,7 @@ class Author:
 
     def __init__(self, name: str):
         self.name = name
-        self._contracts = []  # 
+        self._contracts = []  # Instance variable to track contracts
         Author.all_authors.append(self)
 
     def contracts(self):
@@ -33,7 +33,14 @@ class Book:
 
     def __init__(self, title: str):
         self.title = title
+        self._contracts = []  # Instance variable to track contracts
         Book.all_books.append(self)
+
+    def contracts(self):
+        return self._contracts
+
+    def authors(self):
+        return [contract.author for contract in self._contracts]
 
 
 class Contract:
@@ -54,7 +61,12 @@ class Contract:
         self.date = date
         self.royalties = royalties
         Contract.all_contracts.append(self)
+        
+        # Add this contract to the author's and book's contracts
+        author._contracts.append(self)
+        book._contracts.append(self)
 
     @classmethod
     def contracts_by_date(cls, date: str):
         return [contract for contract in cls.all_contracts if contract.date == date]
+

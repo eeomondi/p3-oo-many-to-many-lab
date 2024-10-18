@@ -3,7 +3,7 @@ class Author:
 
     def __init__(self, name: str):
         self.name = name
-        self._contracts = []  # Instance variable to track contracts
+        self._contracts = []  # 
         Author.all_authors.append(self)
 
     def contracts(self):

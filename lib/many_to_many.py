@@ -1,13 +1,13 @@
 class Author:
-    all_authors = []
-
     def __init__(self, name: str):
         self.name = name
         self._contracts = []  # Instance variable to track contracts
-        Author.all_authors.append(self)
 
-    def contracts(self):
-        return self._contracts
+
+    def sign_contracts(self, book, date, royalities):
+        contract = contract(self, book, date, royalties * 1000)
+        self._contracts.append(contract)
+        return contract
 
     def books(self):
         return [contract.book for contract in self._contracts]
@@ -44,18 +44,7 @@ class Book:
 
 
 class Contract:
-    all_contracts = []
-
-    def __init__(self, author: Author, book: Book, date: str, royalties: int):
-        if not isinstance(author, Author):
-            raise Exception("Author must be an instance of Author.")
-        if not isinstance(book, Book):
-            raise Exception("Book must be an instance of Book.")
-        if not isinstance(date, str):
-            raise Exception("Date must be a string.")
-        if not isinstance(royalties, int) or royalties < 0 or royalties > 100:
-            raise Exception("Royalties must be an integer between 0 and 100.")
-
+    def __init__(self, author: Author, book: Book, date: str, royalties: int):       
         self.author = author
         self.book = book
         self.date = date

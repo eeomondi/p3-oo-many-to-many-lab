@@ -5,7 +5,7 @@ class Author:
 
 
     def sign_contracts(self, book, date, royalities):
-        contract = contract(self, book, date, royalties * 1000)
+        contract = contract(self, book, date, royalities * 1000)
         self._contracts.append(contract)
         return contract
 
